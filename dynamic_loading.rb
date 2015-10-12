@@ -2,7 +2,7 @@ require_relative 'base_page'
 
 class DynamicLoading < BasePage 
 
-	START_BUTTON = { id: 'start' }
+	START_BUTTON = { css: '#start button' }
 	FINISH_TEXT = { id: 'finish'}
 
 	def initialize(driver)
