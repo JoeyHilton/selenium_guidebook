@@ -1,4 +1,7 @@
-class Login
+require_relative 'base_page'
+
+class Login < BasePage 
+
 	LOGIN_FORM = { id: 'login' }
 	USERNAME_INPUT = { id: 'username' }
 	PASSWORD_INPUT = { id: 'password' }
@@ -6,15 +9,17 @@ class Login
 	FAILURE_MESSAGE = { css: '.flash.error' }
 
 	def initialize(driver)
-		@driver = driver
-		@driver.get ENV['base_url'] + '/login'
-		@driver.find_element(LOGIN_FORM).displayed?.should == true
+		super
+		visit '/login'
+		is_displayed?(LOGIN_FORM).should == true
 	end
+
 	def with(username, password)
-		@driver.find_element(USERNAME_INPUT).send_keys(username)
-		@driver.find_element(PASSWORD_INPUT).send_keys(password)
-		@driver.find_element(LOGIN_FORM).submit
+		type username, USERNAME_INPUT
+		type password, PASSWORD_INPUT
+		submit LOGIN_FORM
 	end
+
 	def success_message_present?
 		@driver.find_element(SUCCESS_MESSAGE).displayed?
 	end
