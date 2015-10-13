@@ -1,4 +1,5 @@
 gem 'sauce_whisk'
+gem 'rake'
 
 group :test do
   # gem 'capybara', '=1.1.2'

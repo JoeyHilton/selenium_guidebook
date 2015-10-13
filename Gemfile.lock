@@ -146,6 +146,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails (~> 4.0)
   pippi
+  rake
   rr
   rspec-rails
   rspec-sidekiq
