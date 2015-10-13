@@ -1,0 +1,61 @@
+<% @nested_level ||= 50 %>
+
+<div class="example">
+  <h3>Large & Deep DOM</h3>
+  <p>Some pages have very large and deeply nested page layouts, which can trigger odd rendering issues and test performance bottlenecks (depending on your locator strategy). These examples are nested <%= @nested_level %> levels deep.</p>
+
+    <h4>No Siblings</h4>
+    <div class='parent'>
+      <% @nested_level.times do %>
+          <%= "<div>" %>
+      <% end %>
+        <div id='no-siblings'>No siblings</div>
+      <% @nested_level.times do %>
+          <%= "</div>" %>
+      <% end %>
+    </div>
+
+    <h4>Siblings</h4>
+      <div>
+        <% @nested_level.times do %>
+          <%= "<div>" %>
+        <% end %>
+
+          <div id='siblings' class='parent large-12 large-centered columns'>
+            <% @nested_level.times do |parent_count| %>
+              <% 3.times do |child_count| %>
+                <% if child_count == 0 %>
+                <%= "<div id='sibling-#{parent_count + 1}.#{child_count + 1}' class='parent large-12 columns tier-#{parent_count + 1} item-#{child_count + 1}'>#{parent_count + 1}.#{child_count + 1}" %>
+                <% else %>
+                <%= "<div id='sibling-#{parent_count + 1}.#{child_count + 1}' class='large-12 tier-#{parent_count + 1} item-#{child_count + 1}'>#{parent_count + 1}.#{child_count + 1}</div>" %>
+                <% end %>
+                <% if parent_count == @nested_level && child_count == 2 %>
+                <%= "</div>" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+
+        <% @nested_level.times do %>
+            <%= "</div>" %>
+        <% end %>
+      </div>
+
+      <h4>Table</h4>
+      <table id='large-table'>
+        <thead>
+          <% @nested_level.times do |header_count| %>
+          <%= "<th id='header-#{header_count + 1}'><span class='column-#{header_count + 1}'>#{header_count + 1}</span></th>" %>
+          <% end %>
+        </thead>
+        <tbody>
+          <% @nested_level.times do |row_count| %>
+          <%= "<tr class='row-#{row_count + 1}'>" %>
+            <% @nested_level.times do |column_count| %>
+            <%= "<td class='column-#{column_count + 1}'>#{row_count + 1}.#{column_count + 1}</td>" %>
+            <% end %>
+          <%= "</tr>" %>
+          <% end %>
+        </tbody>
+      </table>
+</div>

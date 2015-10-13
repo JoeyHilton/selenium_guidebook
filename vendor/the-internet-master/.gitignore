@@ -1,0 +1,9 @@
+tests/config.yaml
+tests/evidence/
+.sass-cache
+*.swp
+.DS_Store
+vendor/*.log
+.rbenv-version
+.ruby-version
+.rvmrc
