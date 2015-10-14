@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require_relative 'support/matchers'
 
 RSpec.configure do |config|
 

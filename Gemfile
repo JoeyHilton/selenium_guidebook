@@ -1,9 +1,11 @@
+source 'https://rubygems.org'
 gem 'sauce_whisk'
 gem 'rake'
 
 group :test do
   # gem 'capybara', '=1.1.2'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'rspec-sidekiq'
   gem 'webmock', require: false
   gem 'rr'

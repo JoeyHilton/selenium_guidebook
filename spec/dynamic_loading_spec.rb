@@ -7,7 +7,7 @@ RSpec.configure do |config|
   end
 end
 
-describe 'Dynamic Loading' do 
+describe 'Dynamic Loading', depth: 'deep' do 
 
 	before(:each) do 
 		@dynamic_loading = DynamicLoading.new(@driver)

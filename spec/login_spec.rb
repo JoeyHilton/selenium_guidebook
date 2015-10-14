@@ -7,7 +7,7 @@ RSpec.configure do |config|
   end
 end
 
-describe 'Login' do
+describe 'Login', depth: 'shallow' do
 	before(:each) do
 		@login = Login.new(@driver)
 	end
